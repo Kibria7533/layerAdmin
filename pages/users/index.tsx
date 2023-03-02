@@ -7,7 +7,16 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Container } from "@mui/system";
+import { client, v1 } from "@datadog/datadog-api-client";
+import { useState, useEffect } from "react";
+const configurationOpts = {
+  authMethods: {
+    apiKeyAuth: "d643e08796d96ba821ee0c4035e751dd",
+    appKeyAuth: "0e957c9c55ca31df22bbe81218ed83dffa10092d",
+  },
+};
 
+const configuration = client.createConfiguration(configurationOpts);
 function createData(
   name: string,
   calories: number,
@@ -25,6 +34,17 @@ const rows = [
 ];
 
 export default function Users() {
+  useEffect(() => {
+    // Update the document title using the browser API
+    const apiInstance = new v1.MonitorsApi(configuration);
+    apiInstance
+      .listMonitors()
+      .then((data: v1.Monitor[]) => {
+        console.log("API called successfully. Returned data: " + data);
+      })
+      .catch((error: any) => console.error(error));
+  });
+
   return (
     <Container fixed sx={{ marginTop: "30px" }}>
       <TableContainer component={Paper}>
