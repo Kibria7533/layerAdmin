@@ -25,6 +25,10 @@ const rows = [
 ];
 
 export default function Clients() {
+  //getting data from the server
+
+  //featching data
+
   return (
     <Container fixed sx={{ marginTop: "30px" }}>
       <TableContainer component={Paper}>
@@ -57,4 +61,4 @@ export default function Clients() {
     </Container>
   );
 }
-//hiii
+//hiii hii
