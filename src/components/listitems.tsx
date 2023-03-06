@@ -37,6 +37,25 @@ export const mainListItems = (
         <ListItemText primary="Clients" />
       </Link>
     </ListItemButton>
+
+    <ListItemButton>
+      <ListItemIcon>
+        <PeopleIcon />
+      </ListItemIcon>
+      <Link href={"/user1"}>
+        <ListItemText primary="Users" />
+      </Link>
+    </ListItemButton>
+
+    <ListItemButton>
+      <ListItemIcon>
+        <PeopleIcon />
+      </ListItemIcon>
+      <Link href={"/permisions"}>
+        <ListItemText primary="Permisions" />
+      </Link>
+    </ListItemButton>
+
     <ListItemButton>
       <ListItemIcon>
         <BarChartIcon />
