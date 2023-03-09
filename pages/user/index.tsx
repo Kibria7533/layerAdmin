@@ -8,6 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Container } from "@mui/system";
 //-------------------------------
+import userStyle from "./userStyle.module.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { imageConfigDefault } from "next/dist/shared/lib/image-config";
@@ -15,8 +16,6 @@ import BookmarkIcon from "@mui/icons-material/Bookmark";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import DriveFileRenameOutlineOutlinedIcon from "@mui/icons-material/DriveFileRenameOutlineOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import userStyle from "./userStyle.module.css";
 
 //------------------------------------
 
@@ -89,7 +88,7 @@ const rows = [
   createData("Eclair", 262, 16.0, 24, 6.0),
 ];
 
-export default function Permisions() {
+export default function User1() {
   const [data, setData] = useState("");
   const [error, setError] = useState("");
 
@@ -115,17 +114,17 @@ export default function Permisions() {
       <div className={userStyle.userDiv}>
         <div className={userStyle.userText}>
           <BookmarkIcon />
-          <span style={{ marginLeft: "5px" }}>পারমিশন</span>
+          <span style={{ marginLeft: "5px" }}>ব্যবহারকারী</span>
         </div>
         <div className={userStyle.userBtn}>
           <button className={userStyle.addBtn}>
             <AddCircleIcon style={{ color: "white", marginRight: "3px" }} />
             <span>নতুন যোগ করুন</span>
           </button>
-          {/* <button className={userStyle.pullBtn}>
+          <button className={userStyle.pullBtn}>
             <AddCircleIcon style={{ color: "white", marginRight: "3px" }} />
             <span>নতুন পুল করুন</span>
-          </button> */}
+          </button>
         </div>
       </div>
       <div className={userStyle.serachDiv}>
@@ -140,47 +139,34 @@ export default function Permisions() {
       </div>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="caption table">
-          <caption>Permision caption</caption>
+          <caption>A basic user table example with a caption</caption>
           <TableHead>
             <TableRow>
-              <TableCell>টীকা</TableCell>
-              <TableCell>টেবিলের নাম</TableCell>
-              <TableCell>ব্যবহারকারী সংজ্ঞায়িত</TableCell>
-              <TableCell>তৈরির তারিখ</TableCell>
-              <TableCell>সাব গ্রুপ</TableCell>
-              <TableCell>সাব গ্রুপ অর্ডার</TableCell>
-              <TableCell>পদক্ষেপ</TableCell>
+              <TableCell align="left">ছবি</TableCell>
+              <TableCell align="left">ব্যবহারকারীর নাম</TableCell>
+              <TableCell align="left">ইমেইল</TableCell>
+              <TableCell align="left">মোবাইল নম্বর</TableCell>
+              <TableCell align="left">রোল</TableCell>
+              <TableCell align="left">পদক্ষেপ</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {/* {rows.map((row) => (
-              <TableRow key={row.name}>
-                <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell>
-                <TableCell align="right">{row.calories}</TableCell>
-                <TableCell align="right">{row.fat}</TableCell>
-                <TableCell align="right">{row.carbs}</TableCell>
-                <TableCell align="right">{row.protein}</TableCell>
-              </TableRow>
-            ))} */}
             {myobj &&
               myobj.map((obj) => (
                 <TableRow key={obj?.id}>
                   <TableCell component="th" scope="row">
                     <img
-                      style={{ width: "25px" }}
+                      style={{ width: "20px" }}
                       src={obj?.profile_pic}
                       alt={obj?.first_name}
                     />
                   </TableCell>
-                  <TableCell>
+                  <TableCell align="left">
                     {obj?.first_name} {obj?.last_name}
                   </TableCell>
-                  <TableCell>{obj?.phone}</TableCell>
-                  <TableCell>{obj?.phone}</TableCell>
-                  <TableCell>{obj?.id}</TableCell>
-                  <TableCell>{obj?.id}</TableCell>
+                  <TableCell align="left">{obj?.email}</TableCell>
+                  <TableCell align="left">{obj?.phone}</TableCell>
+                  <TableCell align="left">{obj?.role}</TableCell>
                   <TableCell
                     align="left"
                     style={{
@@ -197,10 +183,6 @@ export default function Permisions() {
                         style={{ marginRight: "3px" }}
                       />{" "}
                       সংশোধন
-                    </span>
-                    <span className={userStyle.delete}>
-                      <DeleteOutlineIcon style={{ marginRight: "3px" }} /> মুছে
-                      ফেলুন
                     </span>
                   </TableCell>
                 </TableRow>

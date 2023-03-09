@@ -9,18 +9,20 @@ import PeopleIcon from "@mui/icons-material/People";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import LayersIcon from "@mui/icons-material/Layers";
 import AssignmentIcon from "@mui/icons-material/Assignment";
+
 import Link from "next/link";
+import PersonIcon from "@mui/icons-material/Person";
 
 export const mainListItems = (
   <React.Fragment>
-    <ListItemButton>
+    {/* <ListItemButton>
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
       <Link href={"/"}>
         <ListItemText primary="Dashboard" />
       </Link>
-    </ListItemButton>
+    </ListItemButton> */}
     <ListItemButton>
       <ListItemIcon>
         <ShoppingCartIcon />
@@ -40,10 +42,19 @@ export const mainListItems = (
 
     <ListItemButton>
       <ListItemIcon>
-        <PeopleIcon />
+        <PersonIcon />
       </ListItemIcon>
-      <Link href={"/user1"}>
-        <ListItemText primary="Users" />
+      <Link href={"/user"}>
+        <ListItemText primary="User" />
+      </Link>
+    </ListItemButton>
+
+    <ListItemButton>
+      <ListItemIcon>
+        <PersonIcon />
+      </ListItemIcon>
+      <Link href={"/role"}>
+        <ListItemText primary="Role" />
       </Link>
     </ListItemButton>
 
@@ -56,7 +67,7 @@ export const mainListItems = (
       </Link>
     </ListItemButton>
 
-    <ListItemButton>
+    {/* <ListItemButton>
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
@@ -69,32 +80,32 @@ export const mainListItems = (
         <LayersIcon />
       </ListItemIcon>
       <ListItemText primary="Integrations" />
-    </ListItemButton>
+    </ListItemButton> */}
   </React.Fragment>
 );
 
-export const secondaryListItems = (
-  <React.Fragment>
-    <ListSubheader component="div" inset>
-      Saved reports
-    </ListSubheader>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Current month" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Last quarter" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Year-end Reports" />
-    </ListItemButton>
-  </React.Fragment>
-);
+// export const secondaryListItems = (
+//   <React.Fragment>
+//     <ListSubheader component="div" inset>
+//       Saved reports
+//     </ListSubheader>
+//     <ListItemButton>
+//       <ListItemIcon>
+//         <AssignmentIcon />
+//       </ListItemIcon>
+//       <ListItemText primary="Current month" />
+//     </ListItemButton>
+//     <ListItemButton>
+//       <ListItemIcon>
+//         <AssignmentIcon />
+//       </ListItemIcon>
+//       <ListItemText primary="Last quarter" />
+//     </ListItemButton>
+//     <ListItemButton>
+//       <ListItemIcon>
+//         <AssignmentIcon />
+//       </ListItemIcon>
+//       <ListItemText primary="Year-end Reports" />
+//     </ListItemButton>
+//   </React.Fragment>
+// );

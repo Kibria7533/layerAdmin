@@ -1,0 +1,93 @@
+.userDiv {
+  display: flex;
+  align-items: center;
+  height: 120px;
+  background-color: #d1d5db;
+  padding: 0px 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.userText {
+  display: flex;
+  margin-right: 25px;
+  justify-content: center;
+  align-items: center;
+}
+
+.userBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addBtn,
+.pullBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+  background-color: #00d48e;
+  padding: 5px 10px;
+  border: 0px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.detail,
+.reset,
+.delete {
+  display: flex;
+  align-items: center;
+  background-color: #fed7aa;
+  color: #fb923c;
+  padding: 3px 5px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition-duration: 0.5s;
+}
+
+.reset {
+  margin-left: 8px;
+  color: #2563eb;
+  background-color: #60a5fa;
+}
+
+.delete {
+  margin-left: 8px;
+  color: #ef4444;
+  background-color: #fca5a5;
+}
+
+.detail:hover {
+  color: #000;
+}
+
+.reset:hover {
+  color: #fff;
+}
+
+.delete:hover {
+  color: #000;
+}
+
+/* search div design */
+.serachDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.serarchLeft .searchInLeft,
+.serarchRight .searchInRight {
+  width: 75px;
+  padding: 8px;
+  outline: none;
+}
+
+.serarchRight .searchInRight {
+  width: 150px;
+  padding: 8px;
+  margin-left: 3px;
+}

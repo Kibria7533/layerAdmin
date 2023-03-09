@@ -11,6 +11,13 @@ import { Container } from "@mui/system";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { imageConfigDefault } from "next/dist/shared/lib/image-config";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import DriveFileRenameOutlineOutlinedIcon from "@mui/icons-material/DriveFileRenameOutlineOutlined";
+import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
+import userStyle from "./userStyle.module.css";
 
 //------------------------------------
 
@@ -83,7 +90,7 @@ const rows = [
   createData("Eclair", 262, 16.0, 24, 6.0),
 ];
 
-export default function User1() {
+export default function Permisions() {
   const [data, setData] = useState("");
   const [error, setError] = useState("");
 
@@ -106,16 +113,40 @@ export default function User1() {
 
   return (
     <Container fixed sx={{ marginTop: "30px" }}>
+      <div className={userStyle.userDiv}>
+        <div className={userStyle.userText}>
+          <LockOpenIcon style={{ fontSize: "30px" }} />
+          <span style={{ marginLeft: "5px" }}>রোল</span>
+        </div>
+        <div className={userStyle.userBtn}>
+          <button className={userStyle.addBtn}>
+            <AddCircleIcon style={{ color: "white", marginRight: "3px" }} />
+            <span>নতুন যোগ করুন</span>
+          </button>
+          {/* <button className={userStyle.pullBtn}>
+            <AddCircleIcon style={{ color: "white", marginRight: "3px" }} />
+            <span>নতুন পুল করুন</span>
+          </button> */}
+        </div>
+      </div>
+      <div className={userStyle.serachDiv}>
+        <div className={userStyle.serarchLeft}>
+          <input type="number" className={userStyle.searchInLeft} />{" "}
+          <span>টা এন্ট্রি</span>
+        </div>
+        <div className={userStyle.serarchRight}>
+          <span>অনুসন্ধানঃ</span>
+          <input type="number" className={userStyle.searchInRight} />
+        </div>
+      </div>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="caption table">
-          <caption>User1 caption</caption>
+          <caption>Permision caption</caption>
           <TableHead>
             <TableRow>
-              <TableCell>Image</TableCell>
-              <TableCell align="right">User Name</TableCell>
-              <TableCell align="right">Phone Number</TableCell>
-              <TableCell align="right">Role</TableCell>
-              <TableCell align="right">Action</TableCell>
+              <TableCell>নাম (ইংরেজী)</TableCell>
+              <TableCell>প্রদর্শিত নাম</TableCell>
+              <TableCell align="right">পদক্ষেপ</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -133,20 +164,34 @@ export default function User1() {
             {myobj &&
               myobj.map((obj) => (
                 <TableRow key={obj?.id}>
-                  <TableCell component="th" scope="row">
-                    <img
-                      style={{ width: "50px" }}
-                      src={obj?.profile_pic}
-                      alt={obj?.first_name}
-                    />
-                  </TableCell>
-                  <TableCell align="right">
+                  <TableCell>
                     {obj?.first_name} {obj?.last_name}
                   </TableCell>
-                  <TableCell align="right">{obj?.phone}</TableCell>
-                  <TableCell align="right">{obj?.role}</TableCell>
-                  <TableCell align="right">
-                    <span>details</span> <span>reset</span>
+                  <TableCell>
+                    {obj?.first_name} {obj?.last_name}
+                  </TableCell>
+
+                  <TableCell
+                    align="right"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    <span className={userStyle.detail}>
+                      <VisibilityOutlinedIcon style={{ marginRight: "3px" }} />{" "}
+                      বিস্তারিত
+                    </span>{" "}
+                    <span className={userStyle.reset}>
+                      <DriveFileRenameOutlineOutlinedIcon
+                        style={{ marginRight: "3px" }}
+                      />{" "}
+                      সংশোধন
+                    </span>
+                    <span className={userStyle.delete}>
+                      <DeleteOutlineIcon style={{ marginRight: "3px" }} /> মুছে
+                      ফেলুন
+                    </span>
                   </TableCell>
                 </TableRow>
               ))}
