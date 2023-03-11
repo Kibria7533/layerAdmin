@@ -161,14 +161,14 @@ export default function Permisions() {
                 <TableCell align="right">{row.protein}</TableCell>
               </TableRow>
             ))} */}
-            {myobj &&
-              myobj.map((obj) => (
-                <TableRow key={obj?.id}>
+            {data &&
+              data.map((data) => (
+                <TableRow key={data?.id}>
                   <TableCell>
-                    {obj?.first_name} {obj?.last_name}
+                    {data?.first_name} {data?.last_name}
                   </TableCell>
                   <TableCell>
-                    {obj?.first_name} {obj?.last_name}
+                    {data?.first_name} {data?.last_name}
                   </TableCell>
 
                   <TableCell
@@ -178,6 +178,10 @@ export default function Permisions() {
                       alignItems: "center",
                     }}
                   >
+                    <span className={userStyle.delete}>
+                      <DeleteOutlineIcon style={{ marginRight: "3px" }} /> মুছে
+                      ফেলুন
+                    </span>
                     <span className={userStyle.detail}>
                       <VisibilityOutlinedIcon style={{ marginRight: "3px" }} />{" "}
                       বিস্তারিত
@@ -187,10 +191,6 @@ export default function Permisions() {
                         style={{ marginRight: "3px" }}
                       />{" "}
                       সংশোধন
-                    </span>
-                    <span className={userStyle.delete}>
-                      <DeleteOutlineIcon style={{ marginRight: "3px" }} /> মুছে
-                      ফেলুন
                     </span>
                   </TableCell>
                 </TableRow>

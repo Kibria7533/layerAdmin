@@ -44,8 +44,8 @@ export const mainListItems = (
       <ListItemIcon>
         <PersonIcon />
       </ListItemIcon>
-      <Link href={"/user"}>
-        <ListItemText primary="User" />
+      <Link href={"/users"}>
+        <ListItemText primary="Users" />
       </Link>
     </ListItemButton>
 
@@ -53,8 +53,8 @@ export const mainListItems = (
       <ListItemIcon>
         <PersonIcon />
       </ListItemIcon>
-      <Link href={"/role"}>
-        <ListItemText primary="Role" />
+      <Link href={"/roles"}>
+        <ListItemText primary="Roles" />
       </Link>
     </ListItemButton>
 

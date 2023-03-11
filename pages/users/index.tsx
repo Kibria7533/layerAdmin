@@ -7,16 +7,73 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Container } from "@mui/system";
-import { client, v1 } from "@datadog/datadog-api-client";
-import { useState, useEffect } from "react";
-const configurationOpts = {
-  authMethods: {
-    apiKeyAuth: "d643e08796d96ba821ee0c4035e751dd",
-    appKeyAuth: "0e957c9c55ca31df22bbe81218ed83dffa10092d",
-  },
-};
 
-const configuration = client.createConfiguration(configurationOpts);
+//-------------------------------
+import userStyle from "./userStyle.module.css";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { imageConfigDefault } from "next/dist/shared/lib/image-config";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import DriveFileRenameOutlineOutlinedIcon from "@mui/icons-material/DriveFileRenameOutlineOutlined";
+import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
+import Link from "next/link";
+
+//------------------------------------
+
+const myobj = [
+  {
+    id: 1,
+    user_id: "189892788390",
+    first_name: "Shm",
+    last_name: "Usuf",
+    email: "as@gmail.com",
+    pass: "$2a$08$t9C8RfYq5fveHuL0T8uO6OfnhEXl0V4U8JlmuhIT8JthVi0hhn7Fa",
+    stripe_customer_id: null,
+    stripe_subscription_id: null,
+    lawyer_categories: null,
+    profile_pic: "https://randomuser.me/api/portraits/men/40.jpg",
+    role: "lawyer",
+    phone: "01711223344",
+    createdAt: "2023-03-02T01:33:55.513Z",
+    updatedAt: "2023-03-02T01:33:55.513Z",
+  },
+  {
+    id: 2,
+    user_id: "18989244788390",
+    first_name: "Shn",
+    last_name: "Usuf",
+    email: "as@gmail.com",
+    pass: "$2a$08$gI/w3UGy1I2cTXnWJhXDFeMdLNhJpHLjWZ98532AWDaaQnh2sinaC",
+    stripe_customer_id: null,
+    stripe_subscription_id: null,
+    lawyer_categories: null,
+    profile_pic: "https://randomuser.me/api/portraits/men/40.jpg",
+    role: "lawyer",
+    phone: "01711223344",
+    createdAt: "2023-03-02T03:10:03.212Z",
+    updatedAt: "2023-03-02T03:10:03.212Z",
+  },
+  {
+    id: 3,
+    user_id: "1898924478558390",
+    first_name: "Shm",
+    last_name: "Usuf",
+    email: "as@gmail.com",
+    pass: "$2a$08$y6Ex4/yOmc5BpA0kJu2Ve.k8NKSxFVV.QVBhUehmcYnDhtgxWOznu",
+    stripe_customer_id: null,
+    stripe_subscription_id: null,
+    lawyer_categories: null,
+    profile_pic: "https://randomuser.me/api/portraits/men/40.jpg",
+    role: "lawyer",
+    phone: "01711223344",
+    createdAt: "2023-03-02T05:51:07.885Z",
+    updatedAt: "2023-03-02T05:51:07.885Z",
+  },
+];
+
+//-------------------------------------
+
 function createData(
   name: string,
   calories: number,
@@ -33,47 +90,110 @@ const rows = [
   createData("Eclair", 262, 16.0, 24, 6.0),
 ];
 
-export default function Users() {
+export default function User1() {
+  const [data, setData] = useState("");
+  const [error, setError] = useState("");
+
+  //getting data from the server
   useEffect(() => {
-    // Update the document title using the browser API
-    const apiInstance = new v1.MonitorsApi(configuration);
-    apiInstance
-      .listMonitors()
-      .then((data: v1.Monitor[]) => {
-        console.log("API called successfully. Returned data: " + data);
+    fetchData();
+  }, []);
+
+  //featching data
+  const fetchData = async () => {
+    await axios
+      .get("http://35.77.46.232:4000/admin/service-providers")
+      .then((res) => {
+        setData(res.data);
       })
-      .catch((error: any) => console.error(error));
-  });
+      .catch((err) => {
+        setError(err);
+      });
+  };
 
   return (
     <Container fixed sx={{ marginTop: "30px" }}>
+      <div className={userStyle.userDiv}>
+        <div className={userStyle.userText}>
+          <BookmarkIcon />
+          <span style={{ marginLeft: "5px" }}>ব্যবহারকারী</span>
+        </div>
+        <div className={userStyle.userBtn}>
+          <button className={userStyle.addBtn}>
+            <AddCircleIcon style={{ color: "white", marginRight: "3px" }} />
+            <span>নতুন যোগ করুন</span>
+          </button>
+          <button className={userStyle.pullBtn}>
+            <AddCircleIcon style={{ color: "white", marginRight: "3px" }} />
+            <span>নতুন পুল করুন</span>
+          </button>
+        </div>
+      </div>
+      <div className={userStyle.serachDiv}>
+        <div className={userStyle.serarchLeft}>
+          <input type="number" className={userStyle.searchInLeft} />{" "}
+          <span>টা এন্ট্রি</span>
+        </div>
+        <div className={userStyle.serarchRight}>
+          <span>অনুসন্ধানঃ</span>
+          <input type="number" className={userStyle.searchInRight} />
+        </div>
+      </div>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="caption table">
-          <caption>A basic table example with a caption</caption>
+          <caption>A basic user table example with a caption</caption>
           <TableHead>
             <TableRow>
-              <TableCell>Dessert (100g serving)</TableCell>
-              <TableCell align="right">Calories</TableCell>
-              <TableCell align="right">Fat&nbsp;(g)</TableCell>
-              <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-              <TableCell align="right">Protein&nbsp;(g)</TableCell>
+              <TableCell align="left">ছবি</TableCell>
+              <TableCell align="left">ব্যবহারকারীর নাম</TableCell>
+              <TableCell align="left">ইমেইল</TableCell>
+              <TableCell align="left">মোবাইল নম্বর</TableCell>
+              <TableCell align="left">রোল</TableCell>
+              <TableCell align="left">পদক্ষেপ</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <TableRow key={row.name}>
-                <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell>
-                <TableCell align="right">{row.calories}</TableCell>
-                <TableCell align="right">{row.fat}</TableCell>
-                <TableCell align="right">{row.carbs}</TableCell>
-                <TableCell align="right">{row.protein}</TableCell>
-              </TableRow>
-            ))}
+            {data &&
+              data.map((obj) => (
+                <TableRow key={obj?.id}>
+                  <TableCell component="th" scope="row">
+                    <img
+                      style={{ width: "20px" }}
+                      src={obj?.profile_pic}
+                      alt={obj?.first_name}
+                    />
+                  </TableCell>
+                  <TableCell align="left">
+                    {obj?.first_name} {obj?.last_name}
+                  </TableCell>
+                  <TableCell align="left">{obj?.email}</TableCell>
+                  <TableCell align="left">{obj?.phone}</TableCell>
+                  <TableCell align="left">{obj?.role}</TableCell>
+                  <TableCell
+                    align="left"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    <span className={userStyle.detail}>
+                      <VisibilityOutlinedIcon style={{ marginRight: "3px" }} />{" "}
+                      বিস্তারিত
+                    </span>{" "}
+                    <Link href={`users/${obj.id}`} className={userStyle.reset}>
+                      <DriveFileRenameOutlineOutlinedIcon
+                        style={{ marginRight: "3px" }}
+                      />{" "}
+                      সংশোধন
+                    </Link>
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>
     </Container>
   );
 }
+
+//----------------------
