@@ -14,8 +14,11 @@ import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { Container } from "@mui/material";
+import { useRouter } from "next/router";
 
-export default function PaymentForm() {
+export default function params() {
+  const router = useRouter();
+  const userId = router.query.params;
   return (
     <Container fixed sx={{ marginTop: "30px" }}>
       <React.Fragment>
